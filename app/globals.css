@@ -1,0 +1,163 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-success: var(--success);
+  --color-shadow-dark: var(--shadow-dark);
+  --color-shadow-light: var(--shadow-light);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #e4e9f0;
+  --foreground: #2b3445;
+  --card: #e4e9f0;
+  --card-foreground: #2b3445;
+  --popover: #e4e9f0;
+  --popover-foreground: #2b3445;
+  --primary: #1f7a73;
+  --primary-foreground: #f4fbfa;
+  --secondary: #dde3eb;
+  --secondary-foreground: #2b3445;
+  --muted: #dde3eb;
+  --muted-foreground: #5f6b7e;
+  --accent: #d9822b;
+  --accent-foreground: #ffffff;
+  --success: #1f7a73;
+  --destructive: #c2453d;
+  --border: #d3dae4;
+  --input: #d3dae4;
+  --ring: #1f7a73;
+  --radius: 1rem;
+
+  --shadow-dark: #a7b4c7;
+  --shadow-light: #ffffff;
+}
+
+@utility neu-raised {
+  background-color: var(--background);
+  box-shadow:
+    9px 9px 18px var(--shadow-dark),
+    -9px -9px 18px var(--shadow-light);
+}
+
+@utility neu-raised-sm {
+  background-color: var(--background);
+  box-shadow:
+    4px 4px 9px var(--shadow-dark),
+    -4px -4px 9px var(--shadow-light);
+}
+
+@utility neu-inset {
+  background-color: var(--background);
+  box-shadow:
+    inset 6px 6px 12px var(--shadow-dark),
+    inset -6px -6px 12px var(--shadow-light);
+}
+
+@utility neu-inset-sm {
+  background-color: var(--background);
+  box-shadow:
+    inset 3px 3px 6px var(--shadow-dark),
+    inset -3px -3px 6px var(--shadow-light);
+}
+
+@utility neu-button {
+  background-color: var(--background);
+  box-shadow:
+    5px 5px 10px var(--shadow-dark),
+    -5px -5px 10px var(--shadow-light);
+  transition:
+    box-shadow 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+  &:hover {
+    color: var(--primary);
+  }
+  &:active {
+    box-shadow:
+      inset 4px 4px 8px var(--shadow-dark),
+      inset -4px -4px 8px var(--shadow-light);
+  }
+}
+
+@utility neu-primary {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow:
+    5px 5px 12px var(--shadow-dark),
+    -5px -5px 12px var(--shadow-light),
+    inset 1px 1px 2px rgb(255 255 255 / 0.25);
+  transition:
+    box-shadow 180ms ease,
+    filter 180ms ease;
+  &:hover {
+    filter: brightness(1.06);
+  }
+  &:active {
+    box-shadow:
+      inset 4px 4px 8px rgb(0 0 0 / 0.25),
+      inset -2px -2px 6px rgb(255 255 255 / 0.15);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+  }
+  .print-plain {
+    box-shadow: none !important;
+    background: #ffffff !important;
+    border: 1px solid #cbd2dc;
+  }
+}
